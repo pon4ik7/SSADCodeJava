@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SSADCode/SSADCode.iml" filepath="$PROJECT_DIR$/SSADCode/SSADCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSADCodeJava.iml" filepath="$PROJECT_DIR$/SSADCodeJava.iml" />
+    </modules>
+  </component>
+</project>
