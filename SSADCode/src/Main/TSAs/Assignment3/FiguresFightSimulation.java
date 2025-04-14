@@ -23,7 +23,7 @@ public class FiguresFightSimulation {
         Scanner input = new Scanner(System.in);
         int n = input.nextInt();
 
-        Board board = createBoard(n, input);
+        GameFacade game = new GameFacade(n, input);
 
         n = input.nextInt();
 
@@ -40,22 +40,22 @@ public class FiguresFightSimulation {
 
                 switch (action) {
                     case "UP":
-                        board.move(-1, 0, color);
+                        game.move(-1, 0, color);
                         break;
                     case "DOWN":
-                        board.move(1, 0, color);
+                        game.move(1, 0, color);
                         break;
                     case "LEFT":
-                        board.move(0, -1, color);
+                        game.move(0, -1, color);
                         break;
                     case "RIGHT":
-                        board.move(0, 1, color);
+                        game.move(0, 1, color);
                         break;
                     case "COPY":
-                        board.cloneFigure(color);
+                        game.cloneFigure(color);
                         break;
                     case "STYLE":
-                        board.changeStyle(color);
+                        game.changeStyle(color);
                         break;
                     default:
                         throw exception;
@@ -65,8 +65,24 @@ public class FiguresFightSimulation {
             }
 
         }
-        board.printScore();
+        game.printScore();
 
+    }
+}
+
+/**
+ * Represent the simple interface of complex structure Board (for pattern Facade)
+ */
+class GameFacade {
+    Board board;
+
+    /**
+     * Constructor a new Game Facade
+     * @param size size of board
+     * @param input scanner
+     */
+    public GameFacade(int size, Scanner input) {
+        board = createBoard(size, input);
     }
 
     /**
@@ -103,10 +119,48 @@ public class FiguresFightSimulation {
         return board;
     }
 
+    /**
+     * Moves a figure on the board
+     *
+     * @param x     x-direction movement
+     * @param y     y-direction movement
+     * @param color color of figure to move
+     * @throws Exception if move is invalid
+     */
+    public void move(int x, int y, Color color) throws Exception {
+        board.move(x, y, color);
+    }
+
+    /**
+     * Creates a clone of a figure
+     *
+     * @param color color of figure to clone
+     * @throws Exception if cloning is not possible
+     */
+    public void cloneFigure(Color color) throws Exception {
+        board.cloneFigure(color);
+    }
+
+    /**
+     * Changes the movement style of a figure
+     *
+     * @param color color of figure to change
+     * @throws Exception if figure doesn't exist
+     */
+    public void changeStyle(Color color) throws Exception{
+        board.changeStyle(color);
+    }
+
+    /**
+     * Prints the final game score and result
+     */
+    public void printScore() {
+        board.printScore();
+    }
 }
 
 /**
- * Represents the game board and manages game state (for pattern Facade)
+ * Represents the game board and manages game state
  */
 class Board {
 
@@ -449,6 +503,7 @@ class Figure {
 
     /**
      * Creates a new figure
+     *
      * @param x initial x position
      * @param y initial y position
      */
@@ -460,6 +515,7 @@ class Figure {
 
     /**
      * Gets x position
+     *
      * @return x coordinate
      */
     int getX() {
@@ -468,6 +524,7 @@ class Figure {
 
     /**
      * Gets y position
+     *
      * @return y coordinate
      */
     int getY() {
@@ -476,6 +533,7 @@ class Figure {
 
     /**
      * Moves the figure
+     *
      * @param x x movement
      * @param y y movement
      */
@@ -486,6 +544,7 @@ class Figure {
 
     /**
      * Changes the figure's movement style
+     *
      * @return new style
      */
     public Style changeStyle() {
@@ -507,6 +566,7 @@ class GreenFigure extends Figure implements CloneableFigure {
 
     /**
      * Creates a new green figure
+     *
      * @param x initial x position
      * @param y initial y position
      */
@@ -528,6 +588,7 @@ class RedFigure extends Figure implements CloneableFigure {
 
     /**
      * Creates a new red figure
+     *
      * @param x initial x position
      * @param y initial y position
      */
