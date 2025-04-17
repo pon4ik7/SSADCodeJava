@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/rolanmulukin/InnoB24/InnoB24Spring_1/SSAD/SSADCodeJava/SSADCode/src/Main/TSAs/Assignment3/FiguresFightSimulation.java</OriginalElement>
+  <nodes>
+    <node x="-765.2826086956521" y="480.516304347826">Main.TSAs.Assignment3.Board</node>
+    <node x="28.5" y="166.15760869565224">Main.TSAs.Assignment3.FiguresFightSimulation</node>
+    <node x="-122.64130434782612" y="571.3288043478262">Main.TSAs.Assignment3.GreenFigure</node>
+    <node x="-307.89130434782606" y="287.1413043478265">Main.TSAs.Assignment3.Figure</node>
+    <node x="-100.50135869565213" y="380.758152173913">Main.TSAs.Assignment3.CloneableFigure</node>
+    <node x="-356.4619565217391" y="751.516304347826">Main.TSAs.Assignment3.Style</node>
+    <node x="237.93885869565202" y="539.7173913043479">Main.TSAs.Assignment3.PlayingStyle</node>
+    <node x="-722.2826086956521" y="135.50815217391323">Main.TSAs.Assignment3.GameFacade</node>
+    <node x="345.95516304347825" y="685.4728260869565">Main.TSAs.Assignment3.NormalStyle</node>
+    <node x="-375.4619565217391" y="576.3288043478262">Main.TSAs.Assignment3.RedFigure</node>
+    <node x="-138.5964673913045" y="720.516304347826">Main.TSAs.Assignment3.Color</node>
+    <node x="130.17934782608688" y="685.4728260869565">Main.TSAs.Assignment3.AttackStyle</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Main.TSAs.Assignment3.GameFacade" target="Main.TSAs.Assignment3.RedFigure" relationship="CREATE">
+      <point x="124.0" y="68.24999999999977" />
+      <point x="-413.78260869565213" y="308.258152173913" />
+      <point x="-413.78260869565213" y="620.3288043478262" />
+      <point x="-98.5" y="0.0" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.Figure" target="Main.TSAs.Assignment3.PlayingStyle" relationship="TO_ONE">
+      <point x="85.0" y="-54.0" />
+      <point x="311.438858695652" y="349.6413043478265" />
+      <point x="0.0" y="-43.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.GameFacade" target="Main.TSAs.Assignment3.GreenFigure" relationship="CREATE">
+      <point x="124.0" y="-91.35054347826099" />
+      <point x="274.0" y="148.65760869565224" />
+      <point x="274.0" y="501.258152173913" />
+      <point x="-24.14130434782612" y="501.258152173913" />
+      <point x="0.0" y="-49.0" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.RedFigure" target="Main.TSAs.Assignment3.CloneableFigure" relationship="REALIZATION">
+      <point x="98.49995652173914" y="15.000195652173716" />
+      <point x="-144.0" y="635.329" />
+      <point x="-144.0" y="692.973" />
+      <point x="91.859" y="692.973" />
+      <point x="93.86035869565212" y="36.49984782608698" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.NormalStyle" target="Main.TSAs.Assignment3.PlayingStyle" relationship="REALIZATION">
+      <point x="-1.630434782668999E-4" y="-55.999826086956546" />
+      <point x="418.955" y="657.0" />
+      <point x="311.439" y="657.0" />
+      <point x="1.4130434800563307E-4" y="43.499608695652114" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.GreenFigure" target="Main.TSAs.Assignment3.Figure" relationship="GENERALIZATION">
+      <point x="-98.49969565217388" y="1.9565217371564358E-4" />
+      <point x="-160.962" y="620.329" />
+      <point x="-160.962" y="556.0" />
+      <point x="-222.891" y="556.0" />
+      <point x="3.04347826073581E-4" y="116.49984782608703" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.AttackStyle" target="Main.TSAs.Assignment3.PlayingStyle" relationship="REALIZATION">
+      <point x="-3.478260868803318E-4" y="-55.999826086956546" />
+      <point x="200.679" y="657.0" />
+      <point x="311.439" y="657.0" />
+      <point x="1.4130434800563307E-4" y="43.499608695652114" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.FiguresFightSimulation" target="Main.TSAs.Assignment3.GameFacade" relationship="CREATE">
+      <point x="-114.0" y="17.850543478260988" />
+      <point x="124.0" y="0.0" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.GameFacade" target="Main.TSAs.Assignment3.Board" relationship="CREATE">
+      <point x="-65.99983479814648" y="103.57588972441033" />
+      <point x="-665.0337275960883" y="343.58404189832356" />
+      <point x="-665.0337275960883" y="412.78859239563167" />
+      <point x="-66.75111890043615" y="-236.69855583276558" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.Figure" target="Main.TSAs.Assignment3.AttackStyle" relationship="CREATE">
+      <point x="-85.0" y="0.0" />
+      <point x="-392.9619565217391" y="403.6413043478265" />
+      <point x="-392.9619565217391" y="971.016304347826" />
+      <point x="200.67934782608688" y="971.016304347826" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.RedFigure" target="Main.TSAs.Assignment3.Figure" relationship="GENERALIZATION">
+      <point x="-4.347826086359419E-5" y="-43.999804347826284" />
+      <point x="-276.962" y="556.0" />
+      <point x="-222.891" y="556.0" />
+      <point x="3.04347826073581E-4" y="116.49984782608703" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.GameFacade" target="Main.TSAs.Assignment3.Board" relationship="TO_ONE">
+      <point x="15.0" y="104.5" />
+      <point x="15.0" y="-236.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.GreenFigure" target="Main.TSAs.Assignment3.CloneableFigure" relationship="REALIZATION">
+      <point x="-98.49969565217388" y="-14.999804347826284" />
+      <point x="-144.0" y="605.329" />
+      <point x="-144.0" y="692.973" />
+      <point x="91.859" y="692.973" />
+      <point x="93.86035869565212" y="36.49984782608698" />
+    </edge>
+    <edge source="Main.TSAs.Assignment3.Figure" target="Main.TSAs.Assignment3.NormalStyle" relationship="CREATE">
+      <point x="85.0" y="-69.0" />
+      <point x="433.955" y="334.6413043478265" />
+      <point x="14.999836956521733" y="-56.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6510608851926993" showDependencies="true" x="-125.7839173000358" y="596.2313145660414" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
