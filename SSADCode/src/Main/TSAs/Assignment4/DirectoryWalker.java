@@ -10,6 +10,7 @@ import java.util.*;
 public class DirectoryWalker {
     /**
      * Main entry point for the application.
+     *
      * @param args Command line arguments (not used)
      */
     public static void main(String[] args) {
@@ -38,22 +39,22 @@ public class DirectoryWalker {
  * Manages the directory structure and provides operations on it.
  */
 class Finder {
-    Directory head;
-    HashMap<Integer, Directory> dirs;
-    FilePropertiesFactory filePropertiesFactory;
+    private final HashMap<Integer, Directory> dirs;
+    private final FilePropertiesFactory filePropertiesFactory;
 
     /**
      * Initializes the Finder with a root directory.
      */
     public Finder() {
-        head = new Directory(".");
-        dirs = new HashMap<Integer, Directory>();
+        Directory head = new Directory(".");
+        dirs = new HashMap<>();
         dirs.put(0, head);
         filePropertiesFactory = new FilePropertiesFactory();
     }
 
     /**
      * Adds a new directory to the structure.
+     *
      * @param line Input line containing directory information
      */
     public void addDir(String line) {
@@ -78,11 +79,12 @@ class Finder {
 
     /**
      * Adds a new file to the directory structure.
-     * @param parent ID of parent directory
-     * @param type File type ("T" for read-only)
-     * @param owner File owner
-     * @param group File group
-     * @param size File size
+     *
+     * @param parent   ID of parent directory
+     * @param type     File type ("T" for read-only)
+     * @param owner    File owner
+     * @param group    File group
+     * @param size     File size
      * @param fullName File name with extension
      */
     public void addFile(int parent, String type, String owner, String group, double size, String fullName) {
@@ -96,6 +98,7 @@ class Finder {
 
     /**
      * Calculates and displays total memory usage for a directory.
+     *
      * @param id Directory ID
      * @return Formatted string with total memory usage
      */
@@ -110,6 +113,7 @@ class Finder {
 
     /**
      * Displays the directory tree structure.
+     *
      * @param id Root directory ID
      * @return Formatted string representing the tree structure
      */
@@ -130,10 +134,11 @@ class FileProperties {
 
     /**
      * Creates new file properties.
+     *
      * @param extension File extension
-     * @param readOnly Read-only flag
-     * @param owner File owner
-     * @param group File group
+     * @param readOnly  Read-only flag
+     * @param owner     File owner
+     * @param group     File group
      */
     public FileProperties(String extension, boolean readOnly, String owner, String group) {
         this.extension = extension;
@@ -179,10 +184,11 @@ class FilePropertiesFactory {
 
     /**
      * Gets or creates FileProperties instance.
+     *
      * @param extension File extension
-     * @param readOnly Read-only flag
-     * @param owner File owner
-     * @param group File group
+     * @param readOnly  Read-only flag
+     * @param owner     File owner
+     * @param group     File group
      * @return Existing or new FileProperties instance
      */
     public FileProperties getProperties(String extension, boolean readOnly, String owner, String group) {
@@ -204,14 +210,16 @@ abstract class Node {
 
     /**
      * Creates a new node with given name.
+     *
      * @param n Node name
      */
-    public Node(String n) {
+    Node(String n) {
         name = n;
     }
 
     /**
      * Accepts a visitor for processing the node.
+     *
      * @param visitor Visitor implementation
      */
     void accept(Visitor visitor) {
@@ -220,6 +228,7 @@ abstract class Node {
 
     /**
      * Displays the node with given prefix.
+     *
      * @param prefix Display prefix
      * @return Formatted string representation
      */
@@ -234,15 +243,17 @@ class Directory extends Node {
 
     /**
      * Creates a new directory.
+     *
      * @param n Directory name
      */
     public Directory(String n) {
         super(n);
-        children = new ArrayList<Node>();
+        children = new ArrayList<>();
     }
 
     /**
      * Creates iterator for directory children.
+     *
      * @return Children iterator
      */
     public Iterator<Node> createIterator() {
@@ -251,6 +262,7 @@ class Directory extends Node {
 
     /**
      * Adds a child node to the directory.
+     *
      * @param n Child node to add
      */
     public void addChild(Node n) {
@@ -273,6 +285,7 @@ class Directory extends Node {
 
     /**
      * Checks if directory has children.
+     *
      * @return True if directory is not empty
      */
     public boolean isLeaf() {
@@ -281,9 +294,10 @@ class Directory extends Node {
 
     /**
      * Gets directory children.
+     *
      * @return List of child nodes
      */
-    public ArrayList<Node> getChildren() {
+    public List<Node> getChildren() {
         return children;
     }
 }
@@ -297,7 +311,8 @@ class File extends Node {
 
     /**
      * Creates a new file.
-     * @param n File name
+     *
+     * @param n    File name
      * @param size File size
      */
     public File(String n, double size) {
@@ -307,6 +322,7 @@ class File extends Node {
 
     /**
      * Sets file properties.
+     *
      * @param properties File properties to set
      */
     public void setProperties(FileProperties properties) {
@@ -315,6 +331,7 @@ class File extends Node {
 
     /**
      * Gets file size.
+     *
      * @return File size
      */
     BigDecimal getSize() {
@@ -338,6 +355,7 @@ class File extends Node {
 interface Visitor {
     /**
      * Visits a node.
+     *
      * @param node Node to visit
      */
     void visit(Node node);
@@ -369,6 +387,7 @@ class SizeVisitor implements Visitor {
 
     /**
      * Gets total calculated size.
+     *
      * @return Total size
      */
     public BigDecimal getTotalSize() {
@@ -382,12 +401,14 @@ class SizeVisitor implements Visitor {
 interface IteratorDir extends Iterator<Node> {
     /**
      * Checks if there are more nodes to iterate.
+     *
      * @return True if more nodes available
      */
     public boolean hasNext();
 
     /**
      * Gets next node in iteration.
+     *
      * @return Next node
      */
     public Node next();
@@ -401,6 +422,7 @@ class WalkIterator implements IteratorDir {
 
     /**
      * Creates new walk iterator starting from root.
+     *
      * @param root Root iterator
      */
     public WalkIterator(Iterator root) {
