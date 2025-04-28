@@ -1,13 +1,13 @@
-package Main.TSAs.Assignment4;
+package Main.TSAs.Assignment4.TestFlyWeight.WithFlyWeight;
 
 import java.math.BigDecimal;
 import java.util.*;
-
+import org.openjdk.jol.info.*;
 /**
  * Main class for directory walking application.
  * Reads input commands and manages directory structure.
  */
-public class DirectoryWalker {
+public class DirectoryWalkerWithFlyWeight {
     /**
      * Main entry point for the application.
      *
@@ -32,6 +32,8 @@ public class DirectoryWalker {
         }
         System.out.println(finder.displayMemory(0));
         System.out.println(finder.displayTree(0));
+        // Check size with fly weight pattern
+        System.out.println("Total size: " + GraphLayout.parseInstance(finder).totalSize() + " bytes");
     }
 }
 

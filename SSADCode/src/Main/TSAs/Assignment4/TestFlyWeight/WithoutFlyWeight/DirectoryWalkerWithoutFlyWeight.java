@@ -1,13 +1,14 @@
-package Main.TSAs.Assignment4;
+package Main.TSAs.Assignment4.TestFlyWeight.WithoutFlyWeight;
 
 import java.math.BigDecimal;
 import java.util.*;
+import org.openjdk.jol.info.*;
 
 /**
  * Main class for directory walking application.
  * Reads input commands and manages directory structure.
  */
-public class DirectoryWalker {
+public class DirectoryWalkerWithoutFlyWeight{
     /**
      * Main entry point for the application.
      *
@@ -32,6 +33,8 @@ public class DirectoryWalker {
         }
         System.out.println(finder.displayMemory(0));
         System.out.println(finder.displayTree(0));
+        // Check size without fly weight pattern
+        System.out.println("Total size: " + GraphLayout.parseInstance(finder).totalSize() + " bytes");
     }
 }
 
@@ -40,8 +43,6 @@ public class DirectoryWalker {
  */
 class Finder {
     private final HashMap<Integer, Directory> dirs;
-    private final FilePropertiesFactory filePropertiesFactory;
-
     /**
      * Initializes the Finder with a root directory.
      */
@@ -49,7 +50,6 @@ class Finder {
         Directory head = new Directory(".");
         dirs = new HashMap<>();
         dirs.put(0, head);
-        filePropertiesFactory = new FilePropertiesFactory();
     }
 
     /**
@@ -92,7 +92,7 @@ class Finder {
         String ext = fullName.split("\\.")[1];
         File file = new File(name, size);
         Directory dir = dirs.get(parent);
-        file.setProperties(filePropertiesFactory.getProperties(ext, type.equals("T"), owner, group));
+        file.setProperties(ext, type.equals("T"), owner, group);
         dir.addChild(file);
     }
 
@@ -123,84 +123,6 @@ class Finder {
     }
 }
 
-/**
- * Represents file properties including extension, permissions, and ownership.
- */
-class FileProperties {
-    private final String extension;
-    private final boolean readOnly;
-    private final String owner;
-    private final String group;
-
-    /**
-     * Creates new file properties.
-     *
-     * @param extension File extension
-     * @param readOnly  Read-only flag
-     * @param owner     File owner
-     * @param group     File group
-     */
-    public FileProperties(String extension, boolean readOnly, String owner, String group) {
-        this.extension = extension;
-        this.readOnly = readOnly;
-        this.owner = owner;
-        this.group = group;
-    }
-
-    /**
-     * @return File extension
-     */
-    public String getExtension() {
-        return extension;
-    }
-
-    /**
-     * @return True if file is read-only
-     */
-    public boolean isReadOnly() {
-        return readOnly;
-    }
-
-    /**
-     * @return File owner
-     */
-    public String getOwner() {
-        return owner;
-    }
-
-    /**
-     * @return File group
-     */
-    public String getGroup() {
-        return group;
-    }
-}
-
-/**
- * Factory for creating and caching FileProperties objects.
- */
-class FilePropertiesFactory {
-    private static final HashMap<String, FileProperties> propertiesCache = new HashMap<>();
-
-    /**
-     * Gets or creates FileProperties instance.
-     *
-     * @param extension File extension
-     * @param readOnly  Read-only flag
-     * @param owner     File owner
-     * @param group     File group
-     * @return Existing or new FileProperties instance
-     */
-    public FileProperties getProperties(String extension, boolean readOnly, String owner, String group) {
-        String key = extension + readOnly + owner + group;
-        if (!propertiesCache.containsKey(key)) {
-            FileProperties fileProperties = new FileProperties(extension, readOnly, owner, group);
-            propertiesCache.put(key, fileProperties);
-            return fileProperties;
-        }
-        return propertiesCache.get(key);
-    }
-}
 
 /**
  * Abstract base class for file system nodes (files and directories).
@@ -308,7 +230,10 @@ class Directory extends Node {
  * Represents a file in the file system.
  */
 class File extends Node {
-    private FileProperties properties;
+    private String extension;
+    private String owner;
+    private String group;
+    private Boolean type;
     private BigDecimal size;
 
     /**
@@ -324,11 +249,16 @@ class File extends Node {
 
     /**
      * Sets file properties.
-     *
-     * @param properties File properties to set
+     * @param ext
+     * @param type
+     * @param owner
+     * @param group
      */
-    public void setProperties(FileProperties properties) {
-        this.properties = properties;
+    public void setProperties(String ext, boolean type, String owner, String group) {
+        this.extension = ext;
+        this.type = type;
+        this.owner = owner;
+        this.group = group;
     }
 
     /**
@@ -342,7 +272,7 @@ class File extends Node {
 
     @Override
     public String display(String prefix) {
-        return prefix + name + "." + properties.getExtension() + " (" + formatSize(size) + ")";
+        return prefix + name + "." + extension + " (" + formatSize(size) + ")";
     }
 
     private String formatSize(BigDecimal size) {

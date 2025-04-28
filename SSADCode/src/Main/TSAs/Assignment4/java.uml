@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/rolanmulukin/InnoB24/InnoB24Spring_1/SSAD/SSADCodeJava/SSADCode/src/Main/TSAs/Assignment4/DirectoryWalker.java</OriginalElement>
+  <nodes>
+    <node x="388.25" y="361.88043478260875">Main.TSAs.Assignment4.FilePropertiesFactory</node>
+    <node x="-543.1385869565217" y="590.5">Main.TSAs.Assignment4.Directory</node>
+    <node x="-109.14130434782612" y="186.06793478260875">Main.TSAs.Assignment4.Finder</node>
+    <node x="651.25" y="205.8573369565217">Main.TSAs.Assignment4.Visitor</node>
+    <node x="-256.75" y="590.5">Main.TSAs.Assignment4.File</node>
+    <node x="-386.3247282608695" y="246.56793478260875">Main.TSAs.Assignment4.DirectoryWalker</node>
+    <node x="123.375" y="495.92798913043475">Main.TSAs.Assignment4.IteratorDir</node>
+    <node x="-366.5557065217391" y="373.57765685262666">Main.TSAs.Assignment4.Node</node>
+    <node x="365.04211956521726" y="168.8573369565217">Main.TSAs.Assignment4.SizeVisitor</node>
+    <node x="430.25" y="566.5">Main.TSAs.Assignment4.FileProperties</node>
+    <node x="87.875" y="638.5">Main.TSAs.Assignment4.WalkIterator</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Main.TSAs.Assignment4.Finder" target="Main.TSAs.Assignment4.FilePropertiesFactory" relationship="TO_ONE">
+      <point x="186.5" y="97.0" />
+      <point x="-205.5" y="-30.8125" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.SizeVisitor" target="Main.TSAs.Assignment4.Visitor" relationship="REALIZATION">
+      <point x="104.5" y="0.0" />
+      <point x="-74.0" y="0.0" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.Finder" target="Main.TSAs.Assignment4.FilePropertiesFactory" relationship="CREATE">
+      <point x="186.5" y="82.0" />
+      <point x="-205.5" y="-45.8125" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.Directory" target="Main.TSAs.Assignment4.Node" relationship="GENERALIZATION">
+      <point x="121.49958695652174" y="0.0" />
+      <point x="-278.0" y="695.0" />
+      <point x="-278.0" y="573.0" />
+      <point x="-238.60878474278115" y="573.0" />
+      <point x="37.94692177895797" y="69.44906164027327" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.Finder" target="Main.TSAs.Assignment4.Directory" relationship="CREATE">
+      <point x="-186.5" y="-61.5" />
+      <point x="-421.63858695652175" y="229.06793478260875" />
+      <point x="0.0" y="-104.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.File" target="Main.TSAs.Assignment4.Node" relationship="GENERALIZATION">
+      <point x="-128.5" y="0.0" />
+      <point x="-278.0" y="695.0" />
+      <point x="-278.0" y="573.0" />
+      <point x="-296.3561508670464" y="573.0" />
+      <point x="-296.3561508670464" y="528.1292011560618" />
+      <point x="-296.27668031121095" y="528.1292011560618" />
+      <point x="-19.720973789471827" y="69.44906164027327" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.Finder" target="Main.TSAs.Assignment4.File" relationship="CREATE">
+      <point x="-179.0" y="104.5" />
+      <point x="26.60869565217388" y="-104.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.Directory" target="Main.TSAs.Assignment4.Node" relationship="TO_MANY">
+      <point x="98.99958695652174" y="-104.5" />
+      <point x="-46.083293478260885" y="68.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.FilePropertiesFactory" target="Main.TSAs.Assignment4.FileProperties" relationship="CREATE">
+      <point x="0.0" y="56.5" />
+      <point x="0.0" y="-128.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.Directory" target="Main.TSAs.Assignment4.WalkIterator" relationship="CREATE">
+      <point x="0.0" y="104.5" />
+      <point x="-421.63858695652175" y="866.5" />
+      <point x="205.375" y="866.5" />
+      <point x="0.0" y="68.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.DirectoryWalker" target="Main.TSAs.Assignment4.Finder" relationship="CREATE">
+      <point x="88.0" y="0.0" />
+      <point x="-186.5" y="0.0" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.Finder" target="Main.TSAs.Assignment4.Directory" relationship="TO_MANY">
+      <point x="-186.5" y="61.5" />
+      <point x="-406.63858695652175" y="352.06793478260875" />
+      <point x="15.0" y="-104.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.WalkIterator" target="Main.TSAs.Assignment4.IteratorDir" relationship="REALIZATION">
+      <point x="0.0" y="-68.5" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.FilePropertiesFactory" target="Main.TSAs.Assignment4.FileProperties" relationship="TO_MANY">
+      <point x="-191.25" y="56.49956521739125" />
+      <point x="402.5" y="832.0" />
+      <point x="61.5" y="832.0" />
+      <point x="61.5" y="851.5" />
+      <point x="593.75" y="851.5" />
+      <point x="0.0" y="128.5" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.Finder" target="Main.TSAs.Assignment4.SizeVisitor" relationship="CREATE">
+      <point x="186.5" y="-53.21059782608705" />
+      <point x="-104.5" y="0.0" />
+    </edge>
+    <edge source="Main.TSAs.Assignment4.File" target="Main.TSAs.Assignment4.FileProperties" relationship="TO_ONE">
+      <point x="0.0" y="104.5" />
+      <point x="-128.25" y="832.0" />
+      <point x="61.5" y="832.0" />
+      <point x="61.5" y="851.5" />
+      <point x="593.75" y="851.5" />
+      <point x="0.0" y="128.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.5732977753866381" showDependencies="true" x="182.99643755770705" y="612.9002755624107" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
